@@ -23,13 +23,20 @@ class Grades(object):
       return self.grades[student.getIdNum()][:]
     except KeyError:
       raise ValueError('Student not in grade book')
-
+"""
   def allStudents(self):
     if not self.isSorted:
       self.students.sort()
       self.isSorted = True
     return self.students[:]
+"""
 
+  def allStudents(self):
+    if not self.isSorted:
+      self.students.sort()
+      self.isSorted = True
+    for s in self.students:
+      yield s
   def gradeReport(course):
     report = []
     for s in course.allStudents():
